@@ -1,0 +1,35 @@
+Напиши запрос, который согласно данных из поля is_full_time таблицы students вернет такую информацию:
+- 'true', если значение is_full_time равно 1
+- 'false', если значение is_full_time равно 0
+
+Используй CASE вида CASE case_value WHEN value1 THEN result1 ... FROM table
+Значение поля is_full_time может быть отличным от 0 и 1. Этот кейс обрабатывать не нужно.
+
+
+
+-- create schema javarush;
+
+--create table students(
+--	id int not null primary key,
+--	name varchar(100) not null,
+--	age int not null,
+--	is_full_time int not null
+--)
+
+--insert into students (id, name, age, is_full_time)
+--values (11, 'Mary', 21, 0),
+--       (2, 'Peter', 24, 1),
+--       (5, 'Amy', 22, 0),
+--       (7, 'John', 19, 1),
+--       (6, 'Dexter', 40, 3),
+--       (1, 'Maria', 26, 1),
+--       (9, 'Alex', 21, 2);
+
+--select * from students
+
+--select
+--CASE is_full_time
+--    WHEN 0 THEN 'false'
+--    WHEN 1 THEN 'true'
+--END
+--FROM students

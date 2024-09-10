@@ -1,0 +1,41 @@
+
+Напиши запрос, который согласно данных из поля number_of_season таблицы months вернет такую информацию: - 'winter', если значение number_of_season равно 1 - 'spring', если значение number_of_season равно 2 - 'summer', если значение number_of_season равно 3 - 'autumn', если значение number_of_season равно 4 - 'unknown', при любом другом значении number_of_season Используй CASE вида CASE case_value WHEN value1 THEN result1 ... FROM table
+
+
+drop table if exists months;
+
+create table months
+(
+id BIGSERIAL PRIMARY KEY not null ,
+title varchar(100) not null,
+days int not null,
+number_of_season int not null
+)
+
+insert into months(id, title, days, number_of_season)
+values
+	(1, 'January', 31, 1),
+       (2, 'February', 28, 1),
+       (3, 'March', 31, 2),
+       (4, 'April', 30, 2),
+       (5, 'May', 31, 2),
+       (6, 'June', 30, 3),
+       (7, 'July', 31, 3),
+       (8, 'August', 31, 3),
+       (9, 'September', 30, 4),
+       (10, 'October', 31, 4),
+       (11, 'November', 30, 4),
+       (12, 'December', 31, 1),
+       (13, 'Month1', 31, 5),
+       (14, 'Month2', 31, 0)
+
+select * from months
+
+select case number_of_season
+when 1 then 'winter'
+when 2 then 'spring'
+when 3 then 'summer'
+when 4 then 'autumn'
+else 'unknown'
+end
+from months

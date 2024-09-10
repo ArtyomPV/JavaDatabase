@@ -1,0 +1,103 @@
+drop table if exists humans
+
+create table humans 
+(
+id serial not null primary key,
+name varchar(100) not null,
+age int,
+department varchar(255)
+
+);
+
+insert  into humans( name, age, department)
+values ('Valera', 25, 'DEVELOPER'),
+('Vasia', 30, 'DEVELOPER'),
+('Anya', 35, 'HR'),
+('Kolya', 18, 'TESTER' );
+
+select name, department from humans
+
+select department from humans 
+where name='Valera' or name = 'Vasia';
+
+select department from humans 
+where name in('Valera', 'Vasia')
+
+select distinct department from humans 
+where name in ('Valera', 'Vasia')
+
+select name from humans where age > 30
+
+select name from humans where age between 10 and 25
+
+select name, department from humans 
+	where name in('Valera', 'Vasia', 'Anya') 
+	and age > 22 
+	and department = 'HR'
+
+	-- сортировкаn
+select name, department from humans 
+	order by department  desc
+	
+select name, age from humans 
+	where department='DEVELOPER'
+	order by age  desc
+
+select count(*) from humans
+	
+insert into humans (name, age, department)
+values('Petya', 55, 'HR');
+
+select department, count(*) from humans 
+group by department 
+
+select name, max(age) from humans 
+	group by name
+	
+insert into humans (name, age, department)
+values('Valera', 50, 'DEVELOPER');
+
+select name, max(age) from humans 
+	group by name
+
+insert into humans (name, age, department)
+values('Anya', 50, 'DEVELOPER');
+
+select name, max(age) from humans 
+	group by name
+
+	-- самый молодой сотрудник
+select name from humans 
+order by age 
+limit 1
+
+-- сумма возврастов по отделам
+select department, sum(age) from humans 
+group by department
+
+-- сумма возврастов по отделам, где сумма возрастов больше 100
+select department, sum(age) from humans 
+group by department 
+having sum(age) > 100
+
+
+select department, count(*) from humans 
+where department != 'DEVELOPER'
+group by department 
+having count(*) > 1
+
+select * from humans
+
+
+select * from humans 
+where name = 'Valera'
+order by age
+limit 1
+offset 1
+
+-- выбрать второго молодого сотрудника, у которого имя не null 
+select * from humans 
+where name notnull 
+order by age
+limit 1
+offset 1

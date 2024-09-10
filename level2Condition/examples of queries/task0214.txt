@@ -1,0 +1,29 @@
+
+Напиши запрос, который согласно данных из поля experience таблицы developers вернет такую информацию: - 'junior', если значение experience менее 1 - 'middle', если значение experience менее 3 - 'senior', если значение experience менее 5
+Используй CASE вида CASE WHEN condition1 THEN result1 ... FROM table
+
+create table developers (
+id int not null primary key,
+name varchar(100) not null,
+age int not null,
+experience int not null
+)
+
+insert into developers (id, name, age, experience)
+values (11, 'Mary', 21, 1),
+       (2, 'Peter', 24, 3),
+       (5, 'Amy', 22, 0),
+       (7, 'John', 15, 0),
+       (6, 'Dexter', 40, 15),
+       (1, 'Maria', 26, 2),
+       (9, 'Alex', 23, 4)
+;
+
+select * from developers
+
+select case
+when experience < 1 then 'junior'
+when experience < 3 then 'middle'
+when experience < 5 then 'senior'
+end
+from developers
