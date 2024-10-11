@@ -3,6 +3,28 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/level2Condition/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/level2Condition/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level3work_with_tables/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level3work_with_tables/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level4data_type_sql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level4data_type_sql/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level6howWorkWithSQLServer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level6howWorkWithSQLServer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level7JDBC/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level7JDBC/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level8JDBC/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level8JDBC/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level9Hibernate/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level9Hibernate/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernateFromChatGPT/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernateFromChatGPT/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernatestart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernatestart/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/jdbc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/jdbc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
