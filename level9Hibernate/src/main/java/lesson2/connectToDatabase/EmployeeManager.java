@@ -13,7 +13,9 @@ public class EmployeeManager {
     private SessionFactory sessionFactory;
 
     public void init(){
-        this.sessionFactory = new Configuration().configure().buildSessionFactory();
+        this.sessionFactory = new Configuration()
+                .addAnnotatedClass(Human.class)
+                .configure().buildSessionFactory();
     }
     public List<Human> getAllEmployees(){
         try(Session session = sessionFactory.openSession()){
@@ -29,5 +31,9 @@ public class EmployeeManager {
             transaction.commit();
         }
     }
-    public Human getHumanById
+    public Human getHumanById(Integer id){
+        try(Session session = sessionFactory.openSession()){
+             return session.get(Human.class, id);
+        }
+    }
 }
