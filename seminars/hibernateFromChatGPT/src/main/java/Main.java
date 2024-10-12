@@ -23,11 +23,11 @@ public class Main {
 
             // Создание объекта Human
             Human human = new Human();
-            human.setName("Борис");
-            human.setAge(35);
+            human.setName("Семён");
+            human.setAge(42);
 
             // Сохранение объекта Human
-            session.save(human);
+            session.persist(human);
 
             // Завершение транзакции
             session.getTransaction().commit();
