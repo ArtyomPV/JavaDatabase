@@ -4,6 +4,10 @@
 
 [3. Подключаемся к базе данных](#header_connect_to_db)
 
+[4. Работа с Entity-объектами](#heading_entity)
+
+[5. Конфигурирование Hibernate](#heading_config)
+
 <h2 class='heading' id='heading_orm'>Object Relational Mapping</h2>
 
 ORM расшифровывается как Object-Relational Mapping и по сути является маппингом Java-объектов на SQL-запросы.
@@ -335,15 +339,162 @@ SessionFactory sessionFactory = new Configuration()
 .buildSessionFactory();
 ```
 
+<h2 class='heading' id='heading_entity'>Работа с Entity-объектами</h2>
 
+### 4.1 Транзакции и целостность базы данных
+```
+Transaction transaction = session.beginTransaction();
+// выполнить сохранение объекта либо выполнение запроса на изменение/удаление
+transaction.commit();
+```
+### 4.2 Получение объектов
+Получение объекта по его ID
 
+<span class="orange">Класс имя = session.get(Класс.class, ID);</span>
 
+```
+public User getUserById(Integer id) {
+    try (Session session = sessionFactory.openSession()) {
+        User user = session.get(User.class, id);
+        return user;
+    }
+}
+```
 
+### 4.3 Сохранение (добавление) объектов
 
+Сохранение объекта выполняется через транзакции
 
+<span class="orange">session.persist(Объект);</span>
 
+Метод persist() меняет не только базу, но и сам объект. Все дело в том, 
+что когда мы добавляем объект в базу, то до добавления у этого объекта еще нет своего ID. 
+Ну, обычно так, хотя бывают нюансы. А после добавления у объекта ID уж есть.
 
+```
+public boolean saveUser(User user) {
+   try (Session session = sessionFactory.openSession()) {
+      Transaction transaction = session.beginTransaction();
+      session.persist(user);
+      transaction.commit();
+      return true;
+   }
+   catch() {
+      return false;
+   }
+}
+```
 
+### 4.4 Удаление объектов
+
+Если вы хотите удалить существующей объект, то сделать это очень просто.
+Для этого у объекта session есть специальный метод — remove().
+
+Общий вид такого запроса:
+
+<span class="orange">session.remove(Объект);</span>
+
+И, конечно же, напишем код с примером:
+```
+public boolean removeUser(User user) {
+   try (Session session = sessionFactory.openSession()) {
+      Transaction transaction = session.beginTransaction();
+      session.remove(user);
+      transaction.commit();
+      return true;
+   }
+   catch() {
+      return false;
+   }
+}
+```
+<h2 class='heading' id='heading_config'>Конфигурирование Hibernate</h2>
+### 5.1 Автоматическое создание схемы данных
+
+Первая такая настройка — это параметр hbm2ddl.auto. У нее может быть 5 различных значений:
+
+| validate	    | Валидация: Hibernate проверит, совпадают ли имена и типа колонок и полей в базе и в аннотациях. Это самый частый режим.                    |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| update	      | Апдейт: Hibernate обновит таблицы в базе, если они или их колонки отличаются от ожидаемых.                                                 |
+| create	      | Пересоздание: Hibernate удалит все таблицы в базе и создаст их заново на основе данных из аннотаций.                                       |
+| create-drop	 | Создание-удаление. В начале работы Hibernate создаст все таблицы, в конце работы – удалит их за собой.                                     |
+| none	        | Hibernate вообще ничего не будет делать. Если где-то база не совпадает с ожиданием, то будут сыпаться ошибки во время выполнения запросов. |
+
+### 5.2 Логирование запросов
+
+Настройка, включающая логирование, называется hibernate.show_sql. 
+Если выставить ее значение в true, то в консоль будут писаться запросы к базе. 
+Так же в паре с ним используется параметр hibernate.format_sql, 
+который позволяет задать удобный формат SQL-запроса в логе.
+
+Еще один способ логировать запросы к базе — это использовать стандартный логгер. 
+Все дало в том, что Hibernate и так пишет свои запросы в стандартный логер, 
+но только с областью видимости — DEBUG. 
+Тебе нужно поменять два свойства в своем стандартном логере:
+
+```
+logging.level.org.hibernate.SQL=debug
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=trace
+```
+
+Изменение же уровня BasicBinder на trace добавит нам параметры запросы,
+правда, в слегка непривычной форме — поочередное перечислением после самого запроса.
+
+Третий подход: использование специального proxy-драйвера к базе данных.
+
+Например, log4jdbc или p6spy. Оба прокси рабочие и на них есть стартеры, 
+хотя на log4jdbc давно не было коммитов на момент написания статьи.
+
+```
+<dependency>
+    <groupId>com.integralblue</groupId>
+    <artifactId>log4jdbc-spring-boot-starter</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.github.gavlyukovskiy</groupId>
+    <artifactId>p6spy-spring-boot-starter</artifactId>
+</dependency>
+```
+### 5.3 Диалекты SQL
+
+| PostgreSQL	                | org.hibernate.dialect.PostgreSQLDialect    |
+|----------------------------|--------------------------------------------|
+| SAP DB	                    | org.hibernate.dialect.SAPDBDialect         |
+| Sybase	                    | org.hibernate.dialect.SybaseDialect        |
+| Informix	                  | org.hibernate.dialect.InformixDialect      |
+| Microsoft SQL Server 2008	 | org.hibernate.dialect.SQLServer2008Dialect |
+| MySQL	                     | org.hibernate.dialect.MySQLDialect         |
+| Oracle (any version)	      | org.hibernate.dialect.OracleDialect        |
+| Oracle 11g	                | org.hibernate.dialect.Oracle10gDialect     |
+
+### 5.4 Популярные настройки
+
+   MySQL 8.0
+   hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+   hibernate.connection.driver_class=com.mysql.cj.jdbc.Driver
+   hibernate.connection.url=jdbc:mysql://localhost:3306/test
+   hibernate.connection.username=root
+   hibernate.connection.password=secret
+   hibernate.show_sql=true
+   hibernate.hbm2ddl=validate
+
+   MySQL 5.0
+   hibernate.dialect=org.hibernate.dialect.MySQL5Dialect
+   hibernate.connection.driver_class=com.mysql.jdbc.Driver
+   hibernate.connection.url=jdbc:mysql://localhost:3306/test
+   hibernate.connection.username=root
+   hibernate.connection.password=secret
+   hibernate.show_sql=true
+   hibernate.hbm2ddl=validate
+
+   PostgreSQL
+   hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+   hibernate.connection.driver_class= org.postgresql.Driver
+   hibernate.connection.url= jdbc:postgresql://localhost/test
+   hibernate.connection.username=root
+   hibernate.connection.password=secret
+   hibernate.show_sql=true
+   hibernate.hbm2ddl=validate
 
 
 
