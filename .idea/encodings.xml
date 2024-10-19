@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/level10HibernateHQL/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level10HibernateHQL/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level11EntityLifeCycle/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/level11EntityLifeCycle/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/level2Condition/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/level2Condition/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/level3work_with_tables/src/main/java" charset="UTF-8" />
@@ -17,6 +21,14 @@
     <file url="file://$PROJECT_DIR$/level9Hibernate/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seminars/hibernate1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seminars/hibernate1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate2_example/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate2_example/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate2_example2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate2_example2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate3/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seminars/hibernate3/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seminars/hibernateFromChatGPT/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seminars/hibernateFromChatGPT/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seminars/hibernatestart/src/main/java" charset="UTF-8" />

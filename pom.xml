@@ -17,6 +17,13 @@
         <module>seminars</module>
         <module>level8JDBC</module>
         <module>level9Hibernate</module>
+        <module>seminars/hibernate2</module>
+        <module>seminars/hibernate2_example</module>
+        <module>seminars/hibernate2_example2</module>
+        <module>level10HibernateHQL</module>
+        <module>seminars/hibernate3</module>
+        <module>level11EntityLifeCycle</module>
+        <module>level12MappingTypes</module>
     </modules>
 
     <properties>
