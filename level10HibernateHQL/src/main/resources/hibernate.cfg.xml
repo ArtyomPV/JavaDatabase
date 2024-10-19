@@ -14,8 +14,10 @@
         <property name="hibernate.hbm2ddl">auto</property>
         <property name="hibernate.current_session_context_class">thread</property>
 
-        <mapping class="Human"/>
-        <mapping class="Car"/>
+        <mapping class="entity.User"/>
+        <mapping class="entity.Employee"/>
+        <mapping class="entity.Worker"/>
+        <mapping class="entity.WorkerTask"/>
     </session-factory>
 </hibernate-configuration>
 

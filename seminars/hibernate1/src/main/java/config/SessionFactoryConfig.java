@@ -1,5 +1,6 @@
 package config;
 
+
 import entity.Human;
 import org.hibernate.HibernateError;
 import org.hibernate.SessionFactory;
@@ -26,12 +27,15 @@ public class SessionFactoryConfig {
 
     public SessionFactory buildSessionFactoryConfiguration(){
         return new Configuration()
-                .addAnnotatedClass(entity.Human.class)
+                .addAnnotatedClass(Human.class)
+                .addAnnotatedClass(Human.class)
+
                 // PostgreSQL
                 .setProperty(AvailableSettings.JAKARTA_JDBC_URL, "jdbc:postgresql://localhost:5432/postgres")
                 .setProperty(AvailableSettings.JAKARTA_JDBC_USER, "postgres")
                 .setProperty(AvailableSettings.JAKARTA_JDBC_PASSWORD, "root")
                 .setProperty(AvailableSettings.SHOW_SQL, true)
+//                .setProperty(AvailableSettings.HBM2DDL_AUTO, true)
                 .buildSessionFactory();
     }
 }

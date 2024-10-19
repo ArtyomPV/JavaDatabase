@@ -36,6 +36,7 @@ public class Main {
 
             // region Delete human by id
             // Получаем объект из базы данных по id и потом только этот объект передаем на удаление
+
             // выполняем удаление через транзакции
 //            Human human1 = session.get(Human.class, 2);
 //            Transaction transaction1 =  session.beginTransaction();
