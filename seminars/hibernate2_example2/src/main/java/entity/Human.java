@@ -23,4 +23,6 @@ public class Human {
     @OneToMany
     @JoinColumn(name="human_id")
     List<Car> cars;
+    @Enumerated
+    private Gender gender;
 }

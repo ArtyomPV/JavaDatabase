@@ -24,6 +24,10 @@
         <module>seminars/hibernate3</module>
         <module>level11EntityLifeCycle</module>
         <module>level12MappingTypes</module>
+        <module>seminars/hibernate3_example</module>
+        <module>seminars/hibernate4_mapping</module>
+        <module>level13MappingCollection</module>
+        <module>seminars/hibernate5_example</module>
     </modules>
 
     <properties>
