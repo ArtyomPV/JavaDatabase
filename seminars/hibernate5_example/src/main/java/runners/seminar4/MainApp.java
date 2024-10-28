@@ -1,22 +1,21 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+package runners.seminar4;
+
 import config.SessionFactoryConfig;
-import entity.Car;
-import entity.Gender;
-import entity.Gender1;
-import entity.Human;
+import entity.seminar4.Car;
+import entity.seminar4.Gender;
+import entity.seminar4.Gender1;
+import entity.seminar4.Human;
 import org.hibernate.SessionFactory;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainApp {
     public static void main(String[] args) {
         SessionFactoryConfig sessionFactoryConfig = new SessionFactoryConfig();
-        SessionFactory sessionFactory = sessionFactoryConfig.buildSessionFactory();
+        SessionFactory sessionFactory = sessionFactoryConfig.buildSessionFactory("hibernate.cfg.xml");
 
 //        createCarsAndHumans(sessionFactory);
 //

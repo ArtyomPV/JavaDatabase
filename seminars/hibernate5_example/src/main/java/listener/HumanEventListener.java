@@ -1,9 +1,7 @@
 package listener;
 
-import entity.Human;
-import jakarta.persistence.EntityListeners;
+import entity.seminar4.Human;
 import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 
 import java.time.LocalDate;
 

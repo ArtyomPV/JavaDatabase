@@ -12,10 +12,11 @@ import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryConfig {
-    public SessionFactory buildSessionFactory(){
+    public SessionFactory buildSessionFactory(String filePath){
         try{
             StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
-                    .configure("hibernate.cfg.xml")
+//                    .configure("hibernate.cfg.xml")
+                    .configure(filePath)
                     .build();
             Metadata metadata = new MetadataSources(standardServiceRegistry).getMetadataBuilder().build();
             return metadata.getSessionFactoryBuilder().build();

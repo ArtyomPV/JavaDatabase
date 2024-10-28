@@ -1,4 +1,4 @@
-package entity;
+package entity.seminar4;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

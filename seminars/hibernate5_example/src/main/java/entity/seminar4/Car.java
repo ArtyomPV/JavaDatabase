@@ -1,4 +1,4 @@
-package entity;
+package entity.seminar4;
 
 import jakarta.persistence.*;
 import lombok.*;

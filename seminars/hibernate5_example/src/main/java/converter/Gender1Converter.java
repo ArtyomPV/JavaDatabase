@@ -1,6 +1,6 @@
 package converter;
 
-import entity.Gender1;
+import entity.seminar4.Gender1;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

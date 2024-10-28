@@ -13,8 +13,9 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl">auto</property>
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="entity.Car"/>
-        <mapping class="entity.Human"/>
+        <mapping class="entity.seminar4.Car"/>
+        <mapping class="entity.seminar4.Human"/>
+
 
 
     </session-factory>
