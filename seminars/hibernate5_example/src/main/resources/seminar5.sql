@@ -1,34 +1,43 @@
-drop table if exists cars;
+drop table if exists users;
 
-create table cars (
+create table users(
 id serial primary key,
-name varchar(255),
-date int,
-human_id int,
-FOREIGN  key(human_id) references human(id)
+first_name varchar(100),
+middle_name varchar(100),
+last_name varchar(100)
 );
 
-drop table if exists human;
-
-create table human(
+create table lectures(
 id serial primary key,
-balance numeric,
-name varchar(100)
+name varchar(255)
 );
 
-select * from human h ;
-select * from cars;
+create table students(
+id serial primary key,
+first_name varchar(100),
+middle_name varchar(100),
+last_name varchar(100)
+);
 
-alter table human add gender varchar(255);
+create table books(
+id serial primary key,
+name varchar(255)
+);
 
-alter table human add gender1 varchar(255);
+alter table books add student_id int;
 
-alter table human add is_active boolean;
+alter table books add
+foreign key (student_id) references students(id);
 
-alter table human add is_married char;
-alter table human add birthday date;
-alter table human add string_map jsonb;
-alter table human add created_date date;
+select * from users;
 
-update human set birthday = '2002-7-12' where id = 3;
+select * from books;
 
+select * from students;
+
+insert into students(first_name, middle_name, last_name) values
+	('Petr', 'V', 'Gvozdik');
+
+insert into books(name, student_id) values
+	('Astronomy', 3),
+	('Algebra', 4);
